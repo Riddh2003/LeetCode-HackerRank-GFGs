@@ -1,0 +1,25 @@
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer,Integer> map = new HashMap<>();
+        for(int i = 0;i<nums.length;i++){
+            int j = target - nums[i];
+            if(map.containsKey(j)){
+                return new int[]{map.get(j),i};
+            }
+            map.put(nums[i],i);
+        }
+        throw new IllegalArgumentException("No two sum solution");
+    }
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        int len = sc.nextInt();
+        int num[] = new int[len];
+        for(int i = 0;i<num.length;i++){
+            num[i] = sc.nextInt();   
+        }
+        int target = sc.nextInt();
+        Solution s = new Solution();
+        int[] ans = s.twoSum(num, target);
+        System.out.println(ans[0]+" "+ans[1]);
+    }
+}
