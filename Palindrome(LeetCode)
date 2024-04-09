@@ -1,0 +1,31 @@
+class Solution {
+    public static boolean isPalindrome(int x) 
+    {
+        int rev = 0;
+        if(x < 0)
+        {
+            return false;
+        }
+        int temp = x;
+        while(temp > 0)
+        {
+            int last = temp % 10;
+            rev = rev * 10 + last;
+            temp /= 10;
+        }
+        if(rev == x)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+    }
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        int x = sc.nextInt();
+        boolean same =  isPalindrome(x);
+        System.out.println(same);
+    }
+}
