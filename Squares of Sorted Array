@@ -1,0 +1,42 @@
+Question : 
+Input: nums = [-4,-1,0,3,10]
+Output: [0,1,9,16,100]
+Explanation: After squaring, the array becomes [16,1,0,9,100].
+After sorting, it becomes [0,1,9,16,100].
+
+class Solution {
+    public static int[] sortedSquares(int[] nums) {
+        int n = nums.length;
+        int num[] = new int[n];
+        for(int i = 0;i<n;i++){
+            num[i] = nums[i] * nums[i];
+        }
+        int ans[] = sorted(num);
+        System.gc();
+        return ans;
+    }
+    private static int[] sorted(int[] num){
+        for(int i = 0;i<num.length-1;i++){
+            for(int j= 0;j<(num.length-i-1);j++){
+                if(num[j]>num[j+1]){
+                    int temp = num[j];
+                    num[j] = num[j+1];
+                    num[j+1] = temp;
+                }
+            }
+        }
+        System.gc();
+        return num;
+    }
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int nums[] = new int[n];
+        for(int i = 0;i<n;i++){
+            nums[i] = sc.nextInt();
+        }
+        int ans[] = sortedSquares(nums);
+        System.gc();
+        System.out.println(ans);
+    }
+}
