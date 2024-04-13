@@ -1,0 +1,38 @@
+Questions: Given a fixed-length integer array arr, duplicate each occurrence of zero, shifting the remaining elements to the right.
+Example: 
+Input: arr = [1,0,2,3,0,4,5,0]
+Output: [1,0,0,2,3,0,0,4]
+Explanation: After calling your function, the input array is modified to: [1,0,0,2,3,0,0,4]
+
+class Solution {
+    public static int[] duplicateZeros(int[] arr) {
+        int count = 0;
+        for(int num : arr){
+            if(num == 0){
+                count++;
+            }
+        }
+        for(int i = arr.length -1;i>=0;i--){
+            if(i+count<arr.length){
+                    arr[i+count] = arr[i];
+            }   
+            if(arr[i] == 0){
+                count--;
+                if(i+count<arr.length){
+                    arr[i+count] = 0;
+                }
+            }
+        }
+        return arr;
+    }
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int arr[] = new int[n];
+        for(int i = 0;i<n;i++){
+            arr[i] = sc.nextInt();
+        }
+        int ans[] = duplicateZeros(arr);
+        System.out.println(ans);
+    }
+}
