@@ -1,0 +1,31 @@
+Question:
+Given an array of size N-1 such that it only contains distinct integers in the range of 1 to N. Find the missing element.
+Example 1:
+Input:
+N = 5
+A[] = {1,2,3,5}
+Output: 4
+
+
+class Solution {
+    static int missingNumber(int array[], int n) {
+        // Your Code Here
+        Arrays.sort(array);
+        for(int i = 0;i<n-1;i++){
+            if(array[i] != i+1){
+                return i+1;
+            }
+        }
+        return n;
+    }
+    public static void main(){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int array[] = new int[n];
+        for(int i = 0;i<n;i++){
+            array[i] = sc.nextInt();
+        }
+        int ans = missingNumber(array,n);
+        System.out.println(ans);
+    }
+}
